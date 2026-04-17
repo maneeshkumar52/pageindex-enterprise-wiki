@@ -163,7 +163,7 @@ ollama pull nomic-embed-text
 
 ```bash
 # 1. Clone
-git clone <your-repo-url> pageindex-wiki
+git clone https://github.com/maneeshkumar52/pageindex-enterprise-wiki.git pageindex-wiki
 cd pageindex-wiki
 
 # 2. Create virtual environment
@@ -432,7 +432,7 @@ docker exec -it ollama ollama pull nomic-embed-text
 ### Step 1: Clone & Set Up Environment
 
 ```bash
-$ git clone https://github.com/<your-username>/pageindex-enterprise-wiki.git
+$ git clone https://github.com/maneeshkumar52/pageindex-enterprise-wiki.git
 $ cd pageindex-enterprise-wiki
 
 $ python3 -m venv .venv
