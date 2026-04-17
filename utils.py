@@ -207,6 +207,73 @@ def build_doc_metadata(file_path: str) -> dict[str, Any]:
 # Export helpers
 # ---------------------------------------------------------------------------
 
+def export_to_pdf(
+    query: str,
+    answer: str,
+    sources: list[dict[str, Any]],
+    output_dir: str = "outputs",
+) -> str:
+    """
+    Write a Q&A result to a timestamped PDF file in *output_dir*.
+
+    Returns the path of the created file.
+    """
+    from fpdf import FPDF
+
+    def _safe(text: str) -> str:
+        return text.encode("latin-1", errors="replace").decode("latin-1")
+
+    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    ts = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    slug = re.sub(r"\W+", "_", query[:40]).strip("_").lower()
+    filename = f"{ts}_{slug}.pdf"
+    filepath = Path(output_dir) / filename
+
+    pdf = FPDF()
+    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf.add_page()
+
+    pdf.set_font("Helvetica", "B", 18)
+    pdf.cell(0, 12, "Enterprise Knowledge Portal", ln=True, align="C")
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(
+        0, 8,
+        f"Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}",
+        ln=True, align="C",
+    )
+    pdf.ln(8)
+
+    pdf.set_font("Helvetica", "B", 13)
+    pdf.cell(0, 8, "Question", ln=True)
+    pdf.set_font("Helvetica", "", 11)
+    pdf.multi_cell(0, 7, _safe(query))
+    pdf.ln(4)
+
+    pdf.set_font("Helvetica", "B", 13)
+    pdf.cell(0, 8, "Answer", ln=True)
+    pdf.set_font("Helvetica", "", 11)
+    pdf.multi_cell(0, 7, _safe(answer))
+    pdf.ln(4)
+
+    if sources:
+        pdf.set_font("Helvetica", "B", 13)
+        pdf.cell(0, 8, "Sources", ln=True)
+        pdf.ln(2)
+        for i, src in enumerate(sources, 1):
+            fn = src.get("filename", "Unknown")
+            score = src.get("score", 0) * 100
+            pdf.set_font("Helvetica", "B", 10)
+            pdf.cell(0, 6, _safe(f"{i}. {fn} - {score:.0f}% match"), ln=True)
+            snippet = src.get("snippet", "")
+            if snippet:
+                pdf.set_font("Helvetica", "", 9)
+                pdf.multi_cell(0, 5, _safe(snippet[:300]))
+            pdf.ln(2)
+
+    pdf.output(str(filepath))
+    return str(filepath)
+
+
 def export_to_markdown(
     query: str,
     answer: str,

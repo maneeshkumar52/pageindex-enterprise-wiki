@@ -369,3 +369,25 @@ class PageIndexPipeline:
     @property
     def chunk_count(self) -> int:
         return self.vector_store.count
+
+    @property
+    def storage_size(self) -> int:
+        """Total size of all indexed documents in bytes."""
+        return sum(doc.get("size_bytes", 0) for doc in self._registry.values())
+
+    def get_document_chunks(self, doc_id: str) -> list[dict[str, Any]]:
+        """Retrieve all chunks for a document from ChromaDB."""
+        results = self.vector_store._collection.get(
+            where={"doc_id": doc_id},
+            include=["documents", "metadatas"],
+        )
+        chunks: list[dict[str, Any]] = []
+        docs = results.get("documents", [])
+        metas = results.get("metadatas", [])
+        for doc_text, meta in zip(docs, metas):
+            chunks.append({
+                "text": doc_text,
+                "chunk_index": meta.get("chunk_index", 0),
+            })
+        chunks.sort(key=lambda c: c["chunk_index"])
+        return chunks
