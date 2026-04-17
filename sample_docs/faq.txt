@@ -1,0 +1,37 @@
+Frequently Asked Questions (FAQ) — Acme Corporation
+
+Q: How do I request time off?
+A: Log in to the HR Portal (hr.acme-corp.example.com), navigate to "Time Off" → "New Request", select the dates and leave type, then submit. Your manager will be notified automatically. Requests should be submitted at least 2 weeks in advance for periods exceeding 3 days.
+
+Q: What is the company's remote work policy?
+A: Acme supports a hybrid model with a minimum of 2 in-office days per week. Remote work eligibility depends on your role and requires manager approval. Core hours (10 AM – 3 PM local time) must be maintained. See the HR Policy Manual Section 6 for details.
+
+Q: How do I report a compliance concern?
+A: You can report concerns through: (1) Direct contact with the Compliance Officer, (2) The Ethics Hotline at 1-800-ACME-ETHICS available 24/7, (3) The online portal at compliance.acme-corp.example.com, or (4) Written report to the Compliance Office on Floor 12. All reports can be made anonymously with no retaliation.
+
+Q: When are performance reviews conducted?
+A: Annual performance reviews are conducted in December each year. Your manager will schedule a one-on-one review meeting. Salary adjustments based on performance take effect January 1 of the following year.
+
+Q: What benefits am I eligible for as a new employee?
+A: Full-time employees are eligible for health insurance (medical, dental, vision), 401(k) retirement plan (after 90 days with up to 6% company match), 15 days annual leave, 12 sick days, life insurance, and professional development allowance ($2,000/year). Part-time employees receive prorated benefits.
+
+Q: How do I access IT support?
+A: Submit tickets via the IT Service Desk at support.acme-corp.example.com or call extension 5000. For urgent issues (system outage, security incident), call the Emergency IT line at extension 5999. Standard response times: Critical — 15 min, High — 1 hour, Medium — 4 hours, Low — 1 business day.
+
+Q: What is the expense reimbursement process?
+A: Submit expense reports within 30 days of the expense through the Finance Portal. Attach all receipts for expenses over $25. Reports under $500 require manager approval; reports over $500 also need VP approval. Reimbursements are processed within 10 business days.
+
+Q: Can I use personal devices for work?
+A: Acme has a Bring Your Own Device (BYOD) policy for mobile phones and tablets. Devices must have MDM (Mobile Device Management) software installed. Laptops must be company-issued. Contact IT Security for BYOD enrollment.
+
+Q: What training is required for new hires?
+A: New hires must complete the following within their first 30 days: Company Orientation (Day 1), Information Security Awareness, Anti-Bribery & Corruption, Data Protection (GDPR/CCPA), Code of Conduct acknowledgement, and department-specific onboarding. All training is accessed through the Learning Management System (LMS).
+
+Q: How do I change my tax withholding or direct deposit?
+A: Log in to the Payroll Portal at payroll.acme-corp.example.com. Navigate to "My Profile" → "Tax & Banking". W-4 changes can be made anytime and take effect on the next pay cycle. Direct deposit changes require 1 pay cycle to process.
+
+Q: What is the company's policy on professional development?
+A: Each employee receives a $2,000 annual professional development allowance for conferences, courses, and certifications. Amounts exceeding this require VP approval. Employees may also request up to 5 paid study days per year for approved certifications.
+
+Q: Where can I find the employee handbook?
+A: The complete Employee Handbook is available on the company intranet at intranet.acme-corp.example.com/handbook. A printed copy is also available from HR. The handbook is updated annually each January.

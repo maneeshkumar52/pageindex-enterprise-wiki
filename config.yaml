@@ -1,0 +1,48 @@
+# ============================================================================
+# PageIndex Wiki — Configuration
+# ============================================================================
+# All runtime settings live here. Never hard-code paths or model names.
+
+# ---------- LLM / Ollama ----------
+ollama:
+  base_url: "http://localhost:11434"
+  model: "llama3"                      # default model for Q&A generation
+  embedding_model: "nomic-embed-text"  # model used for vector embeddings
+  temperature: 0.3
+  top_p: 0.9
+  timeout: 120                         # seconds
+
+# ---------- PageIndex ----------
+pageindex:
+  workspace: "data/workspace"          # local workspace for self-hosted mode
+  index_model: "ollama/llama3"         # LiteLLM model string for tree indexing
+  retrieve_model: "ollama/llama3"      # LiteLLM model string for retrieval agent
+  toc_check_pages: 5
+  max_pages_per_node: 10
+  add_node_summary: true
+  add_doc_description: true
+
+# ---------- ChromaDB (complementary vector search) ----------
+chromadb:
+  persist_directory: "data/chromadb"
+  collection_name: "wiki_documents"
+  chunk_size: 512
+  chunk_overlap: 64
+
+# ---------- Storage ----------
+storage:
+  upload_dir: "data/uploads"
+  index_dir: "data/indexes"
+  output_dir: "outputs"
+
+# ---------- Logging ----------
+logging:
+  level: "INFO"
+  file: "data/app.log"
+  format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+
+# ---------- Streamlit ----------
+streamlit:
+  page_title: "PageIndex Enterprise Wiki"
+  page_icon: "📚"
+  max_upload_mb: 200

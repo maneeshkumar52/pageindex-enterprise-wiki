@@ -1,0 +1,114 @@
+# HR Policy Manual — Acme Corporation
+
+## 1. Introduction
+
+This document outlines the Human Resources policies and procedures for all employees of Acme Corporation. It is the responsibility of each employee to read, understand, and comply with these policies.
+
+**Effective Date:** January 1, 2025
+**Last Revised:** March 15, 2025
+**Applies to:** All full-time, part-time, and contract employees
+
+## 2. Employment Categories
+
+### 2.1 Full-Time Employees
+Employees working 40 hours per week on a regular basis. Full-time employees are eligible for the complete benefits package including health insurance, retirement contributions, and paid time off.
+
+### 2.2 Part-Time Employees
+Employees working fewer than 30 hours per week. Part-time employees receive prorated benefits based on hours worked.
+
+### 2.3 Contract Employees
+Individuals engaged for a specific project or duration. Contract employees are not eligible for company benefits unless explicitly stated in their agreement.
+
+## 3. Leave Policies
+
+### 3.1 Annual Leave
+- **New employees (0-1 year):** 15 days per year, accrued monthly.
+- **Employees (1-5 years):** 20 days per year.
+- **Senior employees (5+ years):** 25 days per year.
+- Leave must be requested at least 2 weeks in advance for periods exceeding 3 days.
+- Unused leave can be carried forward up to a maximum of 10 days.
+
+### 3.2 Sick Leave
+- All employees receive 12 sick days per calendar year.
+- A medical certificate is required for absences exceeding 3 consecutive days.
+- Sick leave cannot be carried forward or encashed.
+
+### 3.3 Parental Leave
+- **Primary caregiver:** 16 weeks of paid leave.
+- **Secondary caregiver:** 4 weeks of paid leave.
+- Parental leave must be taken within 12 months of the child's birth or adoption.
+
+### 3.4 Bereavement Leave
+- 5 days of paid leave for the loss of an immediate family member.
+- 3 days for extended family members.
+
+## 4. Code of Conduct
+
+### 4.1 Professional Behaviour
+All employees are expected to maintain professional conduct in the workplace. This includes:
+- Treating colleagues with respect and dignity.
+- Avoiding discrimination based on race, gender, religion, age, or disability.
+- Maintaining confidentiality of proprietary information.
+- Adhering to data protection regulations (GDPR, CCPA as applicable).
+
+### 4.2 Conflict of Interest
+Employees must disclose any potential conflicts of interest to their manager and the HR department. Outside employment or business activities that may conflict with company interests require prior written approval.
+
+### 4.3 Anti-Harassment Policy
+Acme Corporation maintains a zero-tolerance policy for harassment of any kind. Employees who experience or witness harassment should report it immediately to HR or use the anonymous reporting hotline.
+
+## 5. Compensation and Benefits
+
+### 5.1 Salary Reviews
+- Annual performance reviews are conducted in December.
+- Salary adjustments take effect on January 1 of the following year.
+- Merit-based increases range from 3% to 8% based on performance rating.
+
+### 5.2 Health Insurance
+- Company-sponsored health insurance covers medical, dental, and vision.
+- Coverage extends to spouse and dependents up to age 26.
+- Premium cost-sharing: Company 80%, Employee 20%.
+
+### 5.3 Retirement Plan
+- 401(k) plan with company matching up to 6% of base salary.
+- Employees are eligible after 90 days of employment.
+- Vesting schedule: 25% per year over 4 years.
+
+## 6. Remote Work Policy
+
+### 6.1 Eligibility
+Remote work arrangements are available to employees whose roles can be performed outside the office, subject to manager approval.
+
+### 6.2 Guidelines
+- Employees must maintain a dedicated workspace with reliable internet.
+- Core working hours (10 AM - 3 PM local time) must be observed.
+- Remote workers must be available on company communication channels.
+- Equipment provided: laptop, monitor, keyboard, mouse, headset.
+
+### 6.3 Hybrid Model
+The company supports a hybrid model: minimum 2 days in-office per week. In-office days may be designated by department heads for team collaboration.
+
+## 7. Grievance Procedure
+
+1. **Informal Resolution:** Discuss the matter directly with the person involved.
+2. **Manager Escalation:** If unresolved, raise the issue with your immediate supervisor.
+3. **HR Mediation:** HR will facilitate a mediation session within 5 business days.
+4. **Formal Complaint:** Submit a written complaint to the Grievance Committee.
+5. **Committee Decision:** The committee will provide a binding decision within 15 business days.
+
+## 8. Termination
+
+### 8.1 Notice Period
+- Employees with less than 1 year of service: 2 weeks notice.
+- Employees with 1-5 years of service: 4 weeks notice.
+- Senior employees and management: 8 weeks notice.
+
+### 8.2 Exit Process
+- Return all company property (laptop, badge, keys).
+- Complete knowledge transfer documentation.
+- Exit interview with HR within the final week.
+- Final paycheck includes accrued leave and any applicable bonuses.
+
+---
+
+*For questions regarding this policy, contact HR at hr@acme-corp.example.com or extension 4500.*

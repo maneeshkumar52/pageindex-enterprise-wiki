@@ -1,0 +1,15 @@
+# Docker artefacts
+data/
+outputs/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+.git/
+.gitignore
+.env
+.vscode/
+.idea/
+*.md
+!README.md
+docker-compose.yml
