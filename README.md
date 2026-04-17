@@ -248,472 +248,194 @@ docker exec -it ollama ollama pull nomic-embed-text
 
 ## 6. UI Walkthrough & Snapshots
 
-> Below are high-fidelity ASCII representations of every screen and component. Run the app to experience the full interactive UI with gradient themes, hover animations, responsive layout, and Altair charts.
+> Real screenshots from the live application. Each section walks you through a component, explains its purpose, and shows exactly what you will see in the browser.
 
-### 6.1 Portal Landing — Header, Metrics Ribbon & Tab Navigation
+### 6.1 Landing Page — Header, Metrics Ribbon & Tab Navigation
 
-```
-┌───────────────────────────────────────────────────────────────────────────────────┐
-│                                                                                   │
-│  ┌── SIDEBAR ────────────────┐  ┌── MAIN PANEL ───────────────────────────────┐  │
-│  │                            │  │                                             │  │
-│  │  📚 Enterprise Wiki       │  │  ╔═══════════════════════════════════════╗   │  │
-│  │  Reasoning-Based RAG      │  │  ║  🔍 Enterprise Knowledge Portal      ║   │  │
-│  │  100% On-Premise          │  │  ║                                       ║   │  │
-│  │  ───────────────────────  │  │  ║  Ask natural-language questions about ║   │  │
-│  │                            │  │  ║  your organisation's documents.      ║   │  │
-│  │  📤 Upload Documents      │  │  ║                                       ║   │  │
-│  │  ┌────────────────────┐   │  │  ║  🌲 PageIndex RAG  🧠 Ollama LLM    ║   │  │
-│  │  │ Drag & drop files  │   │  │  ║  📊 ChromaDB       🔒 100% Local     ║   │  │
-│  │  │ PDF DOCX TXT MD    │   │  │  ║  📄 Multi-Format                     ║   │  │
-│  │  └────────────────────┘   │  │  ╚═══════════════════════════════════════╝   │  │
-│  │                            │  │        ▲ Gradient purple header              │  │
-│  │  ───────────────────────  │  │                                             │  │
-│  │                            │  │  ┌─────────┐ ┌────────┐ ┌──────┐ ┌──────┐ │  │
-│  │  📂 Indexed Documents     │  │  │📄 Docs  │ │🧩Chunk│ │🤖LLM│ │🔧Mod│ │  │
-│  │  ┌────────────────────┐   │  │  │   3     │ │  47   │ │Onlin│ │llam3│ │  │
-│  │  │📕 hr_policy.txt    │   │  │  └─────────┘ └────────┘ └──────┘ └──────┘ │  │
-│  │  │  txt  15 ch · 4 KB │   │  │  ┌─────────┐ ┌────────┐                    │  │
-│  │  │  5m ago            │   │  │  │💾 Store │ │🔍Query│   ◀─ 6 metric      │  │
-│  │  │  [🗑️ Remove]       │   │  │  │ 14.2 KB │ │   5   │      cards         │  │
-│  │  ├────────────────────┤   │  │  └─────────┘ └────────┘                    │  │
-│  │  │📝 compliance.md    │   │  │                                             │  │
-│  │  │  md  22 ch · 8 KB  │   │  │  ─────────────────────────────────────────  │  │
-│  │  │  5m ago            │   │  │                                             │  │
-│  │  │  [🗑️ Remove]       │   │  │  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──┐│  │
-│  │  ├────────────────────┤   │  │  │🔎 Se-│ │💬 Ch-│ │📊 An-│ │📄 Do-│ │ℹ️││  │
-│  │  │📄 faq.txt          │   │  │  │ arch │ │  at  │ │alyti│ │ cs   │ │Ab││  │
-│  │  │  txt  10 ch · 2 KB │   │  │  └──────┘ └──────┘ └──────┘ └──────┘ └──┘│  │
-│  │  │  5m ago            │   │  │  ▲ 5 tabs (was 3)                          │  │
-│  │  │  [🗑️ Remove]       │   │  │                                             │  │
-│  │  └────────────────────┘   │  └─────────────────────────────────────────────┘  │
-│  │                            │                                                   │
-│  │  [🗑️ Clear All Documents]│                                                   │
-│  │                            │                                                   │
-│  │  ───────────────────────  │                                                   │
-│  │  ⚙️ System Status ▸      │                                                   │
-│  │  🕒 Recent Queries (5) ▸ │                                                   │
-│  │  ───────────────────────  │                                                   │
-│  │  Built with PageIndex ·   │                                                   │
-│  │  Ollama · Streamlit       │                                                   │
-│  └────────────────────────────┘                                                   │
-└───────────────────────────────────────────────────────────────────────────────────┘
-```
+The landing page is the first thing users see when they open the portal. It features a **gradient purple hero header** with the project tagline and technology badges, a **six-metric ribbon** showing live system stats (Documents, Chunks, LLM status, active Model, Storage, and Queries), and **five navigation tabs** for the core features.
 
-### 6.2 Search Tab — Smart Suggestions, Query, Answer & Source Cards
+![Landing Page](docs/screenshots/01_landing_page.png)
 
-```
-┌─ 🔎 Search Tab ──────────────────────────────────────────────────────────────────┐
-│                                                                                   │
-│  💡 Quick Questions — click to search instantly                                   │
-│  ┌───────────────────┐ ┌───────────────────┐ ┌─────────────────────┐ ┌──────────┐│
-│  │Key points in      │ │Key points in      │ │Key points in faq?  │ │Compare   ││
-│  │hr policy?         │ │compliance manual? │ │                    │ │all docs  ││
-│  └───────────────────┘ └───────────────────┘ └─────────────────────┘ └──────────┘│
-│                                                                                   │
-│  ┌──────────────────────────────────────────────────────────────────────────────┐ │
-│  │ 🔍  What is the leave policy for new employees?                              │ │
-│  └──────────────────────────────────────────────────────────────────────────────┘ │
-│                                                                                   │
-│  ┌──────────────────────────────────────────────────────────┐  ┌─────────────┐   │
-│  │  🔍 Search Documents                                     │  │ Sources: 5  │   │
-│  └──────────────────────────────────────────────────────────┘  └─────────────┘   │
-│                                                                                   │
-│  ⏱️ 3.2s  ·  📌 3 sources  ·  📊 47 chunks searched                              │
-│                                                                                   │
-│  ── 📝 Answer ──────────────────────────────────────────────────────────────────  │
-│  ╔══════════════════════════════════════════════════════════════════════════════╗  │
-│  ║  New employees are entitled to the following leave benefits:                ║  │
-│  ║                                                                            ║  │
-│  ║  1. **Annual Leave**: 15 days per calendar year, accrued monthly at        ║  │
-│  ║     1.25 days/month. Leave can be carried forward up to 5 days.            ║  │
-│  ║  2. **Sick Leave**: 10 days per year. Medical certificate required         ║  │
-│  ║     for absences exceeding 3 consecutive days.                             ║  │
-│  ║  3. **Probation Period**: During the 90-day probation, leave accrues       ║  │
-│  ║     but can only be taken with manager approval.                           ║  │
-│  ╚══════════════════════════════════════════════════════════════════════════════╝  │
-│                                                                                   │
-│  ┌──────────────────────────────┐  ┌──────────────────────────────┐              │
-│  │  📥 Export Markdown           │  │  📄 Export PDF                │              │
-│  └──────────────────────────────┘  └──────────────────────────────┘              │
-│                                                                                   │
-│  ── 📌 Sources ─────────────────────────────────────────────────────────────────  │
-│  ┌──────────────────────────────────────────────────────────────────────────────┐ │
-│  │ ▎ 📄 Source 1: hr_policy.txt · chunk 3                          ┌────────┐  │ │
-│  │ ▎                                                                │  94%  │  │ │
-│  │ ▎ ████████████████████████████████████████████████████░░░░░░     └────────┘  │ │
-│  │ ▎ Annual leave entitlement for full-time employees is 15 working             │ │
-│  │ ▎ days per calendar year, prorated for the first year of…                    │ │
-│  └──────────────────────────────────────────────────────────────────────────────┘ │
-│  ┌──────────────────────────────────────────────────────────────────────────────┐ │
-│  │ ▎ 📄 Source 2: hr_policy.txt · chunk 5                          ┌────────┐  │ │
-│  │ ▎                                                                │  87%  │  │ │
-│  │ ▎ ██████████████████████████████████████████████░░░░░░░░░░      └────────┘  │ │
-│  │ ▎ Sick leave policy: employees receive 10 days of paid sick                  │ │
-│  │ ▎ leave annually. Medical certificate required for…                          │ │
-│  └──────────────────────────────────────────────────────────────────────────────┘ │
-│  ┌──────────────────────────────────────────────────────────────────────────────┐ │
-│  │ ▎ 📄 Source 3: faq.txt · chunk 2                                ┌────────┐  │ │
-│  │ ▎                                                                │  72%  │  │ │
-│  │ ▎ █████████████████████████████████░░░░░░░░░░░░░░░░░░░░░░░      └────────┘  │ │
-│  │ ▎ Q: Can new employees take leave during probation?                          │ │
-│  │ ▎ A: Yes, with prior approval from your direct manager…                     │ │
-│  └──────────────────────────────────────────────────────────────────────────────┘ │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
+**What you see here:**
+- **Hero header** — gradient purple banner with the app title, description, and tech badges (PageIndex RAG, Ollama LLM, ChromaDB Vectors, 100% Local, Multi-Format).
+- **Metrics ribbon** — six KPI cards that update in real time: document count, chunk count, LLM connection status, active model name, total storage, and query count.
+- **Tab bar** — Search, Chat, Analytics, Documents, and About tabs. Each tab opens a distinct functional area.
 
-### 6.3 Chat Tab — Multi-Turn Conversational Q&A
+---
 
-```
-┌─ 💬 Chat Tab ────────────────────────────────────────────────────────────────────┐
-│                                                                                   │
-│  Multi-turn conversation grounded in your documents. Every response is            │
-│  backed by retrieved evidence.                                                    │
-│                                                                                   │
-│  ┌─ 🧑 User ─────────────────────────────────────────────────────────────────┐   │
-│  │  What are the compliance requirements for data handling?                   │   │
-│  └───────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                   │
-│  ┌─ 🤖 Assistant ─────────────────────────────────────────────────────────────┐  │
-│  │  Based on the compliance manual, data handling requirements include:        │  │
-│  │                                                                             │  │
-│  │  1. **Classification**: All data must be classified as Public,             │  │
-│  │     Internal, Confidential, or Restricted before processing.               │  │
-│  │  2. **Encryption**: Confidential and Restricted data must be               │  │
-│  │     encrypted at rest (AES-256) and in transit (TLS 1.2+).                │  │
-│  │  3. **Access Control**: Role-based access with quarterly reviews.          │  │
-│  │  4. **Retention**: Follow the retention schedule in Appendix B.            │  │
-│  │                                                                             │  │
-│  │  ▸ 📌 3 source(s) ──────────────────────────────────────                   │  │
-│  │  │ compliance_manual.md · chunk 4 · 91%                                    │  │
-│  │  │ compliance_manual.md · chunk 7 · 85%                                    │  │
-│  │  │ hr_policy.txt · chunk 12 · 68%                                          │  │
-│  │  └──────────────────────────────────────────────────────                    │  │
-│  └───────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                   │
-│  ┌─ 🧑 User ─────────────────────────────────────────────────────────────────┐   │
-│  │  What happens if an employee violates these policies?                      │   │
-│  └───────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                   │
-│  ┌─ 🤖 Assistant ─────────────────────────────────────────────────────────────┐  │
-│  │  According to the compliance manual, policy violations follow a            │  │
-│  │  progressive discipline process:                                           │  │
-│  │                                                                             │  │
-│  │  • **First offense**: Written warning + mandatory retraining               │  │
-│  │  • **Second offense**: Suspension (1–5 days) + performance review          │  │
-│  │  • **Severe violations**: Immediate termination + legal referral           │  │
-│  │                                                                             │  │
-│  │  ▸ 📌 2 source(s)                                                          │  │
-│  └───────────────────────────────────────────────────────────────────────────┘   │
-│                                                                                   │
-│  ┌──────────────────────────────────────────────────────────────────────────────┐ │
-│  │  💬 Ask about your documents…                                                │ │
-│  └──────────────────────────────────────────────────────────────────────────────┘ │
-│                                                                                   │
-│  ┌──────────────────────────────┐                                                 │
-│  │  🧹 Clear Conversation       │                                                 │
-│  └──────────────────────────────┘                                                 │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
+### 6.2 Sidebar — Upload, Documents & System Status
 
-### 6.4 Analytics Tab — Charts, Metrics & Query Log
+The sidebar is the control panel. It is always visible on the left side of the screen. From here, users upload documents, see indexed files, check system health, and review recent queries.
 
-```
-┌─ 📊 Analytics Tab ──────────────────────────────────────────────────────────────┐
-│                                                                                  │
-│  ── 📊 Document Insights ─────────────────────────────────────────────────────   │
-│                                                                                  │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │Total Documents│  │ Total Chunks │  │Avg Chunks/Doc│  │Total Storage │         │
-│  │      3        │  │     47       │  │    15.7      │  │   14.2 KB    │         │
-│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘         │
-│                                                                                  │
-│  ─────────────────────────────────────────────────────────────────────────────   │
-│                                                                                  │
-│  ┌─ File Type Distribution ────────┐  ┌─ Chunks per Document ────────────────┐  │
-│  │                                  │  │                                      │  │
-│  │        ╭───────╮                 │  │  compliance.md  ████████████████ 22  │  │
-│  │      ╭─┤  TXT  ├─╮              │  │                                      │  │
-│  │    ╭─┤ │   2   │ ├─╮            │  │  hr_policy.txt  ███████████ 15       │  │
-│  │    │ │ ╰───────╯ │ │            │  │                                      │  │
-│  │    │ ╰─────┬─────╯ │            │  │  faq.txt        ███████ 10           │  │
-│  │    │  ╭────┴────╮   │            │  │                                      │  │
-│  │    ╰──┤   MD    ├───╯            │  │  0     5    10    15    20    25     │  │
-│  │       │    1    │                │  │                                      │  │
-│  │       ╰─────────╯                │  │                                      │  │
-│  │   ◀─ Altair donut chart          │  │   ◀─ Altair bar chart               │  │
-│  └──────────────────────────────────┘  └──────────────────────────────────────┘  │
-│                                                                                  │
-│  ─────────────────────────────────────────────────────────────────────────────   │
-│                                                                                  │
-│  ── Document Sizes ──────────────────────────────────────────────────────────    │
-│  ┌──────────────────────────────────────────────────────────────────────────┐    │
-│  │  compliance.md  ████████████████████████████████████████ 8.2 KB         │    │
-│  │  hr_policy.txt  ████████████████████ 4.1 KB                             │    │
-│  │  faq.txt        ██████████ 2.0 KB                                       │    │
-│  └──────────────────────────────────────────────────────────────────────────┘    │
-│                                                                                  │
-│  ─────────────────────────────────────────────────────────────────────────────   │
-│                                                                                  │
-│  ── 🕒 Session Query Log ────────────────────────────────────────────────────    │
-│  ┌──────┬──────────────────────────────────────┬──────────┬──────────┐           │
-│  │  #   │  Query                                │ Time (s) │ Sources  │           │
-│  ├──────┼──────────────────────────────────────┼──────────┼──────────┤           │
-│  │  1   │  What is the leave policy for new…    │   3.2    │    3     │           │
-│  │  2   │  Compliance requirements for data…    │   4.1    │    3     │           │
-│  │  3   │  What happens if someone violates…    │   2.8    │    2     │           │
-│  │  4   │  Employee benefits summary            │   3.5    │    4     │           │
-│  │  5   │  Key points in hr policy?             │   2.9    │    3     │           │
-│  └──────┴──────────────────────────────────────┴──────────┴──────────┘           │
-│                                                                                  │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
+![Sidebar](docs/screenshots/02_sidebar.png)
 
-### 6.5 Document Explorer — Metadata, Chunk Viewer & Filtering
+**Key components:**
+- **Upload Documents** — drag-and-drop file uploader accepting PDF, DOCX, TXT, and Markdown files with an "Index All Files" button.
+- **Indexed Documents** — each indexed file shows its type badge (TXT/MD/PDF/DOCX), chunk count, file size, and indexing timestamp. Each entry has a "Remove" button for deletion.
+- **System Status** — collapsible panel showing Ollama connection (Online/Offline), available models, document and chunk counts, and total storage.
+- **Clear All Documents** — bulk delete button to reset the entire knowledge base.
 
-```
-┌─ 📄 Documents Tab ──────────────────────────────────────────────────────────────┐
-│                                                                                  │
-│  ── 📄 Document Explorer — 3 document(s) ────────────────────────────────────   │
-│                                                                                  │
-│  ┌──────────────────────────────────────────────────────────────────────────┐    │
-│  │  🔎 Type to filter documents…                                            │    │
-│  └──────────────────────────────────────────────────────────────────────────┘    │
-│                                                                                  │
-│  ▸ 📄 hr_policy.txt  ──────────────────────────────────────────────────────     │
-│  ▾ 📝 compliance_manual.md  ───────────────────────────────────────────────     │
-│  │                                                                               │
-│  │  Metadata                                                                     │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐                        │
-│  │  │ Size         │  │ Chunks       │  │ Indexed      │                        │
-│  │  │ 8.2 KB       │  │ 22           │  │ 5m ago       │                        │
-│  │  └──────────────┘  └──────────────┘  └──────────────┘                        │
-│  │  Type: md  ·  Hash: a3f7c2b9e1d4…  ·  ID: 4f8a9c2e1b…                      │
-│  │                                                                               │
-│  │  Content Preview (22 chunks)                                                  │
-│  │  ┌────────────────────────────────────────────────────────────────────┐       │
-│  │  │  Chunk 0                                                          │       │
-│  │  │  Compliance Manual — Corporate Regulatory Framework               │       │
-│  │  │  This document outlines the mandatory compliance requirements     │       │
-│  │  │  for all employees regarding data handling, privacy, and…         │       │
-│  │  ├────────────────────────────────────────────────────────────────────┤       │
-│  │  │  Chunk 1                                                          │       │
-│  │  │  Section 1: Data Classification Framework                         │       │
-│  │  │  All organizational data must be classified into one of four      │       │
-│  │  │  categories: Public, Internal, Confidential, or Restricted.       │       │
-│  │  │  Classification determines the applicable security controls…      │       │
-│  │  ├────────────────────────────────────────────────────────────────────┤       │
-│  │  │  Chunk 2                                                          │       │
-│  │  │  Section 2: Encryption Requirements                               │       │
-│  │  │  Confidential and Restricted data must be encrypted using         │       │
-│  │  │  AES-256 at rest. Data in transit must use TLS 1.2 or higher…    │       │
-│  │  └────────────────────────────────────────────────────────────────────┘       │
-│  │  Showing 8 of 22 chunks                                                      │
-│  │                                                                               │
-│  │  ┌──────────────────────────────────────────────────────────────────┐         │
-│  │  │  🗑️ Delete compliance_manual.md                                  │         │
-│  │  └──────────────────────────────────────────────────────────────────┘         │
-│  │                                                                               │
-│  ▸ 📄 faq.txt  ────────────────────────────────────────────────────────────     │
-│                                                                                  │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
+---
 
-### 6.6 About Tab — Pipeline Flows, Architecture & Tech Stack
+### 6.3 Empty State — Search Tab (Before Indexing)
 
-```
-┌─ ℹ️ About Tab ───────────────────────────────────────────────────────────────────┐
-│                                                                                   │
-│  ── How It Works ─────────────────────────────────────────────────────────────    │
-│                                                                                   │
-│  Indexing Pipeline                                                                │
-│  ┌──────────────────────────────────────────────────────────────────────────┐     │
-│  │  📄        📝        🧩        🧮        🌲        💾                   │     │
-│  │  Upload → Parse → Chunk → Embed → Index → Store                        │     │
-│  └──────────────────────────────────────────────────────────────────────────┘     │
-│                                                                                   │
-│  Query Pipeline                                                                   │
-│  ┌──────────────────────────────────────────────────────────────────────────┐     │
-│  │  ❓        🔍        📊        🧠        📝        📌                   │     │
-│  │  Query → Search → Rank → Generate → Answer → Cite                      │     │
-│  └──────────────────────────────────────────────────────────────────────────┘     │
-│                                                                                   │
-│  ─────────────────────────────────────────────────────────────────────────────    │
-│                                                                                   │
-│  ── Dual Retrieval Architecture ──────────────────────────────────────────────   │
-│                                                                                   │
-│  ┌──────────┬─────────────┬──────────────────────────────────────────────────┐   │
-│  │  Layer   │ Technology  │ Approach                                         │   │
-│  ├──────────┼─────────────┼──────────────────────────────────────────────────┤   │
-│  │ Primary  │ PageIndex   │ Hierarchical reasoning tree — LLM navigates     │   │
-│  │          │             │ the tree to locate relevant sections             │   │
-│  │ Secondary│ ChromaDB    │ Dense-vector cosine search over overlapping      │   │
-│  │          │             │ text chunks                                      │   │
-│  └──────────┴─────────────┴──────────────────────────────────────────────────┘   │
-│                                                                                   │
-│  ┌──────────────┐   ┌──────────────┐   ┌────────────────┐   ┌───────────┐       │
-│  │  Browser     │──▶│  Streamlit   │──▶│  PageIndex     │──▶│  Ollama   │       │
-│  │  (Employee)  │   │  Portal      │   │  + ChromaDB    │   │  LLM      │       │
-│  │              │◀──│              │◀──│                │◀──│  (Local)  │       │
-│  └──────────────┘   └──────────────┘   └────────────────┘   └───────────┘       │
-│                                                                                   │
-│  ─────────────────────────────────────────────────────────────────────────────    │
-│                                                                                   │
-│  ── 🛠️ Tech Stack ────────────────────────────────────────────────────────────   │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
-│  │  🌲           │  │  🧠           │  │  📊           │  │  🎯           │         │
-│  │  PageIndex    │  │  Ollama      │  │  ChromaDB    │  │  Streamlit   │         │
-│  │  Reasoning    │  │  Local LLM   │  │  Vector      │  │  Interactive │         │
-│  │  tree RAG     │  │  inference   │  │  embeddings  │  │  UI          │         │
-│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘         │
-│                                                                                   │
-│  ─────────────────────────────────────────────────────────────────────────────    │
-│                                                                                   │
-│  ── Configuration ────────────────────────────────────────────────────────────   │
-│  {                                                                                │
-│    "LLM Model":       "llama3",                                                   │
-│    "Embedding Model": "nomic-embed-text",                                         │
-│    "Chunk Size":       512,                                                       │
-│    "Chunk Overlap":    64,                                                        │
-│    "Temperature":      0.3,                                                       │
-│    "Max Upload (MB)":  200                                                        │
-│  }                                                                                │
-│                                                                                   │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
+When no documents have been indexed, the Search tab shows an empty state prompting users to upload content. This guides new users through the onboarding flow.
 
-### 6.7 Sidebar — System Status, Query History & Upload Progress
+![Search Tab Empty](docs/screenshots/03_search_tab.png)
 
-```
-┌── SIDEBAR — System Status ──────────────────────┐
-│                                                   │
-│  ⚙️ System Status ▾                              │
-│  ┌───────────────────────────────────────────┐   │
-│  │ Ollama  ● Online                          │   │
-│  │ Models: llama3, nomic-embed-text          │   │
-│  │                                           │   │
-│  │  ┌──────────┐  ┌──────────┐               │   │
-│  │  │ Docs     │  │ Chunks   │               │   │
-│  │  │   3      │  │   47     │               │   │
-│  │  └──────────┘  └──────────┘               │   │
-│  │  ┌──────────────────────┐                 │   │
-│  │  │ Storage              │                 │   │
-│  │  │ 14.2 KB              │                 │   │
-│  │  └──────────────────────┘                 │   │
-│  └───────────────────────────────────────────┘   │
-│                                                   │
-│  🕒 Recent Queries (5) ▾                         │
-│  ┌───────────────────────────────────────────┐   │
-│  │ 🔍 What is the leave policy for new…      │   │
-│  │    3.2s · 3 sources · 5m ago              │   │
-│  │ 🔍 Compliance requirements for data…      │   │
-│  │    4.1s · 3 sources · 3m ago              │   │
-│  │ 🔍 What happens if someone violates…      │   │
-│  │    2.8s · 2 sources · 2m ago              │   │
-│  │ 🔍 Employee benefits summary              │   │
-│  │    3.5s · 4 sources · 1m ago              │   │
-│  │ 🔍 Key points in hr policy?               │   │
-│  │    2.9s · 3 sources · just now            │   │
-│  └───────────────────────────────────────────┘   │
-│                                                   │
-└───────────────────────────────────────────────────┘
-```
+---
 
-### 6.8 Upload Progress & Notifications
+### 6.4 Empty State — Chat Tab (Before Indexing)
 
-```
-┌── SIDEBAR — Upload in Progress ─────────────────┐
-│                                                   │
-│  📤 Upload Documents                              │
-│  ┌───────────────────────────────────────────┐   │
-│  │  📎 hr_policy.txt                         │   │
-│  │  📎 compliance_manual.md                  │   │
-│  │  📎 faq.txt                               │   │
-│  └───────────────────────────────────────────┘   │
-│  3 file(s) selected                               │
-│                                                   │
-│  ┌───────────────────────────────────────────┐   │
-│  │  🔄 Index All Files                       │   │
-│  └───────────────────────────────────────────┘   │
-│                                                   │
-│  Indexing compliance_manual.md (2/3)              │
-│  ████████████████████░░░░░░░░░░░░ 66%             │
-│                                                   │
-│  ┌─────────────────────────────────────────┐     │
-│  │ ✅ hr_policy.txt — 15 chunks            │ ◀─  │
-│  └─────────────────────────────────────────┘ Toast│
-│  ┌─────────────────────────────────────────┐     │
-│  │ ✅ compliance_manual.md — 22 chunks     │     │
-│  └─────────────────────────────────────────┘     │
-│                                                   │
-└───────────────────────────────────────────────────┘
-```
+Similarly, the Chat tab displays an empty state before any documents are indexed, letting users know they need to upload files first.
 
-### 6.9 PDF Export — Professional Report Output
+![Chat Tab Empty](docs/screenshots/04_chat_tab.png)
 
-```
-┌──────────────────────────────────────────────────────────────────────┐
-│                                                                      │
-│                 Enterprise Knowledge Portal                          │
-│         Generated: 2024-01-15 14:30:25 UTC                          │
-│                                                                      │
-│  ── Question ──────────────────────────────────────────────────────  │
-│  What is the leave policy for new employees?                         │
-│                                                                      │
-│  ── Answer ────────────────────────────────────────────────────────  │
-│  New employees are entitled to the following leave benefits:         │
-│                                                                      │
-│  1. Annual Leave: 15 days per calendar year, accrued monthly at     │
-│     1.25 days/month. Leave can be carried forward up to 5 days.     │
-│  2. Sick Leave: 10 days per year. Medical certificate required      │
-│     for absences exceeding 3 consecutive days.                      │
-│  3. Probation Period: During the 90-day probation, leave accrues   │
-│     but can only be taken with manager approval.                    │
-│                                                                      │
-│  ── Sources ───────────────────────────────────────────────────────  │
-│  1. hr_policy.txt - 94% match                                       │
-│     Annual leave entitlement for full-time employees is 15 working  │
-│     days per calendar year, prorated for the first year…            │
-│  2. hr_policy.txt - 87% match                                       │
-│     Sick leave policy: employees receive 10 days of paid sick…      │
-│  3. faq.txt - 72% match                                             │
-│     Q: Can new employees take leave during probation?               │
-│     A: Yes, with prior approval from your direct manager…           │
-│                                                                      │
-└──────────────────────────────────────────────────────────────────────┘
+---
 
-  ◀─ Saved to: outputs/20240115_143025_what_is_the_leave_policy.pdf
-```
+### 6.5 Empty State — Analytics Tab (Before Indexing)
 
-### 6.10 Empty States — Onboarding Flow
+The Analytics tab shows placeholder content when no data is available, ensuring users understand the dashboard will populate after indexing.
 
-```
-┌─ When No Documents Are Indexed ─────────────────────────────────────────────────┐
-│                                                                                  │
-│  ── 🔎 Search Tab ────────────────────     ── 💬 Chat Tab ────────────────────  │
-│  ┌──────────────────────────────────┐     ┌──────────────────────────────────┐  │
-│  │                                  │     │                                  │  │
-│  │           📤                     │     │           💬                     │  │
-│  │                                  │     │                                  │  │
-│  │   No Documents Indexed           │     │   Start a Conversation           │  │
-│  │   Upload documents using the     │     │   Upload and index documents     │  │
-│  │   sidebar to start searching.    │     │   first, then chat here.         │  │
-│  │                                  │     │                                  │  │
-│  └──────────────────────────────────┘     └──────────────────────────────────┘  │
-│                                                                                  │
-│  ── 📊 Analytics Tab ─────────────────   ── 📄 Documents Tab ────────────────  │
-│  ┌──────────────────────────────────┐     ┌──────────────────────────────────┐  │
-│  │                                  │     │                                  │  │
-│  │           📊                     │     │           📄                     │  │
-│  │                                  │     │                                  │  │
-│  │   No Data Yet                    │     │   No Documents                   │  │
-│  │   Index documents to see         │     │   Upload documents using the     │  │
-│  │   analytics.                     │     │   sidebar to explore them here.  │  │
-│  │                                  │     │                                  │  │
-│  └──────────────────────────────────┘     └──────────────────────────────────┘  │
-│                                                                                  │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
+![Analytics Tab Empty](docs/screenshots/05_analytics_tab.png)
+
+---
+
+### 6.6 Empty State — Documents Tab (Before Indexing)
+
+The Documents tab displays an empty explorer view, ready to list files once they are indexed.
+
+![Documents Tab Empty](docs/screenshots/06_documents_tab.png)
+
+---
+
+### 6.7 About Tab — How It Works, Architecture & Tech Stack
+
+The About tab is a built-in documentation page that explains the system architecture visually. It includes:
+
+![About Tab](docs/screenshots/07_about_tab.png)
+
+**What you will find:**
+- **Indexing Pipeline** — a visual flow showing Upload, Parse, Chunk, Embed, Index, Store.
+- **Query Pipeline** — a visual flow showing Query, Search, Rank, Generate, Answer, Cite.
+- **Dual Retrieval Architecture** — table comparing PageIndex (reasoning tree) vs ChromaDB (vector search).
+- **System architecture diagram** — Browser, Streamlit, PageIndex + ChromaDB, Ollama.
+- **Tech Stack cards** — PageIndex, Ollama, ChromaDB, and Streamlit with descriptions.
+- **Live configuration** — current settings (LLM model, embedding model, chunk size, overlap, temperature, max upload size).
+
+---
+
+### 6.8 Step 1: Upload Files
+
+To index documents, use the sidebar file uploader. Select one or more files (PDF, DOCX, TXT, MD). The screenshot below shows three sample documents selected and ready for indexing.
+
+![Upload Files](docs/screenshots/08_upload_files.png)
+
+**Flow:**
+1. Click "Browse files" or drag and drop into the upload area.
+2. Selected files appear with their names and sizes.
+3. Click **"Index All Files"** to begin the ingestion pipeline.
+
+---
+
+### 6.9 Step 2: Indexing in Progress
+
+After clicking "Index All Files", the system processes each file through the pipeline: parse, chunk, embed, store. A progress indicator shows the current status.
+
+![Indexing in Progress](docs/screenshots/09_indexing_progress.png)
+
+**What happens behind the scenes:**
+1. The file is parsed and split into overlapping text chunks (default: 512 tokens, 64-token overlap).
+2. Each chunk is embedded using `nomic-embed-text` via Ollama.
+3. Embeddings and text are stored in ChromaDB.
+4. PageIndex builds a reasoning tree for the document (when available).
+
+---
+
+### 6.10 Step 3: Indexing Complete
+
+Once indexing finishes, a success notification appears and the indexed documents appear in the sidebar's "Indexed Documents" section.
+
+![Indexing Complete](docs/screenshots/10_indexing_complete.png)
+
+---
+
+### 6.11 Search Tab — With Indexed Documents
+
+After indexing, the Search tab becomes fully functional. It shows:
+
+![Search Tab with Documents](docs/screenshots/11_search_with_docs.png)
+
+**Components:**
+- **Smart Suggestions** — auto-generated question pills based on indexed document names (e.g., "Key points in hr_policy?"). Click any pill to instantly run that query.
+- **Search input** — type natural-language questions.
+- **Search / Sources buttons** — trigger the query and control source display.
+- **Answer panel** — LLM-generated answer grounded in retrieved chunks with response time, source count, and chunks searched.
+- **Source cards** — each source shows the originating file, chunk number, relevance percentage bar, and a text preview.
+- **Export buttons** — save the answer as Markdown or a professional PDF report.
+
+---
+
+### 6.12 Analytics Tab — Charts, Metrics & Insights
+
+The Analytics dashboard provides visual insights into the indexed knowledge base.
+
+![Analytics with Data](docs/screenshots/12_analytics_with_data.png)
+
+**Dashboard components:**
+- **Summary metrics** — Total Documents, Total Chunks, Average Chunks/Document, Total Storage.
+- **File Type Distribution** — Altair donut chart showing the breakdown by file type (TXT, MD, PDF, DOCX).
+- **Chunks per Document** — Altair bar chart showing how many chunks each document produced.
+- **Document Sizes** — bar chart comparing file sizes across all indexed documents.
+- **Session Query Log** — table of all queries made in the current session with response times and source counts.
+
+---
+
+### 6.13 Document Explorer — Browse & Inspect
+
+The Document Explorer lets users browse all indexed documents, view metadata, and inspect individual chunks.
+
+![Document Explorer](docs/screenshots/13_documents_explorer.png)
+
+**Features:**
+- **Filter bar** — type to filter documents by name.
+- **Document list** — collapsible entries for each indexed document with file type icon and name.
+- **Metadata** — file size, chunk count, indexing timestamp, file type, content hash, and document ID.
+
+---
+
+### 6.14 Document Expanded — Chunk-Level Inspection
+
+Click on any document in the explorer to expand it and view its individual chunks.
+
+![Document Expanded](docs/screenshots/14_document_expanded.png)
+
+**Details shown:**
+- **Chunk content preview** — full text of each chunk with chunk index numbers.
+- **Chunk navigation** — shows how many chunks are displayed vs total (e.g., "Showing 8 of 22 chunks").
+- **Delete button** — remove a specific document and all its chunks from the knowledge base.
+
+---
+
+### 6.15 About Tab — With Active Data
+
+The About tab also reflects live system data, showing current configuration values and document statistics alongside the architectural diagrams.
+
+![About Tab with Data](docs/screenshots/15_about_with_data.png)
+
+---
+
+### 6.16 Sidebar — With Indexed Documents & System Status
+
+After indexing, the sidebar populates with all indexed documents, showing type badges, chunk counts, sizes, and timestamps. The System Status panel shows live Ollama connection, available models, and storage metrics.
+
+![Sidebar with Documents](docs/screenshots/16_sidebar_with_docs.png)
+
+**Sidebar state after indexing:**
+- Each document card shows: file name, type badge (TXT/MD), chunk count, file size, and "just now" timestamp.
+- "Remove" button per document for individual deletion.
+- "Clear All Documents" button for bulk reset.
+- System Status: Ollama online, available models listed, docs/chunks/storage metrics.
 
 ---
 
