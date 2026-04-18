@@ -180,19 +180,133 @@ Export (Markdown / PDF)  +  Track (Query History)
 | **Python** | 3.11+ | Runtime |
 | **Ollama** | latest | Local LLM server |
 | **Git** | any | Clone the repo |
+| **pip** | 23+ | Package installer (ships with Python) |
 | **Docker** *(optional)* | 24+ | Container deployment |
 
-### Install Ollama
+### 4.1 Install Python
+
+<details>
+<summary><strong>🍎 macOS</strong></summary>
+
+**Option A — Homebrew (recommended)**
+```bash
+brew install python@3.12
+python3 --version   # Python 3.12.x
+```
+
+**Option B — Official installer**
+
+Download from [python.org/downloads/macos](https://www.python.org/downloads/macos/) and run the `.pkg` installer.
+
+**Option C — pyenv (manage multiple versions)**
+```bash
+brew install pyenv
+pyenv install 3.12
+pyenv global 3.12
+python --version
+```
+
+</details>
+
+<details>
+<summary><strong>🪟 Windows</strong></summary>
+
+**Option A — Official installer (recommended)**
+
+1. Download from [python.org/downloads/windows](https://www.python.org/downloads/windows/)
+2. Run the installer — **check "Add python.exe to PATH"** before clicking Install
+3. Verify in PowerShell:
+```powershell
+python --version   # Python 3.12.x
+pip --version
+```
+
+**Option B — Microsoft Store**
+
+Open the Microsoft Store, search for **Python 3.12**, and click Install.
+
+**Option C — winget**
+```powershell
+winget install Python.Python.3.12
+```
+
+**Option D — Chocolatey**
+```powershell
+choco install python --version=3.12
+```
+
+> **Note:** On Windows, use `python` instead of `python3` in all commands below.
+
+</details>
+
+### 4.2 Install Git
+
+<details>
+<summary><strong>🍎 macOS</strong></summary>
 
 ```bash
-# macOS / Linux
-curl -fsSL https://ollama.com/install.sh | sh
+# Ships with Xcode Command Line Tools
+xcode-select --install
 
-# Verify
+# Or via Homebrew
+brew install git
+```
+
+</details>
+
+<details>
+<summary><strong>🪟 Windows</strong></summary>
+
+**Option A — Official installer**
+
+Download from [git-scm.com/download/win](https://git-scm.com/download/win) and run the installer (default options are fine).
+
+**Option B — winget**
+```powershell
+winget install Git.Git
+```
+
+Verify:
+```powershell
+git --version
+```
+
+</details>
+
+### 4.3 Install Ollama
+
+<details>
+<summary><strong>🍎 macOS</strong></summary>
+
+**Option A — Install script**
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+**Option B — Homebrew**
+```bash
+brew install ollama
+```
+
+**Option C — Direct download**
+
+Download the macOS app from [ollama.com/download](https://ollama.com/download) and drag it to Applications.
+
+</details>
+
+<details>
+<summary><strong>🪟 Windows</strong></summary>
+
+1. Download the Windows installer from [ollama.com/download](https://ollama.com/download)
+2. Run `OllamaSetup.exe` and follow the prompts
+3. Verify in PowerShell:
+```powershell
 ollama --version
 ```
 
-### Pull Required Models
+</details>
+
+### 4.4 Pull Required Models
 
 ```bash
 # LLM for Q&A and indexing
@@ -208,18 +322,22 @@ ollama pull nomic-embed-text
 
 ## 5. Quick Start
 
-### Option A — Local (Recommended for Development)
+### Option A — Local Install (Recommended for Development)
+
+<details>
+<summary><strong>🍎 macOS / Linux</strong></summary>
 
 ```bash
-# 1. Clone
+# 1. Clone the repository
 git clone https://github.com/maneeshkumar52/pageindex-enterprise-wiki.git pageindex-wiki
 cd pageindex-wiki
 
-# 2. Create virtual environment
+# 2. Create and activate virtual environment
 python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 
-# 3. Install dependencies
+# 3. Upgrade pip and install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
 
 # 4. Start Ollama (in a separate terminal)
@@ -228,6 +346,63 @@ ollama serve
 # 5. Launch the portal
 streamlit run app.py
 ```
+
+</details>
+
+<details>
+<summary><strong>🪟 Windows (PowerShell)</strong></summary>
+
+```powershell
+# 1. Clone the repository
+git clone https://github.com/maneeshkumar52/pageindex-enterprise-wiki.git pageindex-wiki
+cd pageindex-wiki
+
+# 2. Create and activate virtual environment
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+
+# 3. Upgrade pip and install dependencies
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+# 4. Start Ollama (in a separate terminal)
+ollama serve
+
+# 5. Launch the portal
+streamlit run app.py
+```
+
+> **PowerShell Execution Policy:** If `.venv\Scripts\Activate.ps1` is blocked, run:
+> ```powershell
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+> ```
+
+</details>
+
+<details>
+<summary><strong>🪟 Windows (Command Prompt)</strong></summary>
+
+```cmd
+:: 1. Clone the repository
+git clone https://github.com/maneeshkumar52/pageindex-enterprise-wiki.git pageindex-wiki
+cd pageindex-wiki
+
+:: 2. Create and activate virtual environment
+python -m venv .venv
+.venv\Scripts\activate.bat
+
+:: 3. Upgrade pip and install dependencies
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+:: 4. Start Ollama (in a separate terminal)
+ollama serve
+
+:: 5. Launch the portal
+streamlit run app.py
+```
+
+</details>
 
 Open **http://localhost:8501** in your browser. Done.
 
@@ -243,6 +418,16 @@ docker exec -it ollama ollama pull nomic-embed-text
 
 # Open http://localhost:8501
 ```
+
+### Option C — pip Install (Without Cloning)
+
+If you only want to try the dependencies without cloning:
+
+```bash
+pip install streamlit chromadb pageindex litellm PyMuPDF python-docx fpdf2 PyYAML requests altair pandas python-dotenv
+```
+
+Then clone and run as shown in Option A.
 
 ---
 
@@ -445,15 +630,28 @@ After indexing, the sidebar populates with all indexed documents, showing type b
 
 ### Step 1: Clone & Set Up Environment
 
+**macOS / Linux:**
 ```bash
 $ git clone https://github.com/maneeshkumar52/pageindex-enterprise-wiki.git
 $ cd pageindex-enterprise-wiki
 
 $ python3 -m venv .venv
-$ source .venv/bin/activate        # macOS/Linux
-# .venv\Scripts\activate           # Windows
+$ source .venv/bin/activate
 
+$ pip install --upgrade pip
 $ pip install -r requirements.txt
+```
+
+**Windows (PowerShell):**
+```powershell
+> git clone https://github.com/maneeshkumar52/pageindex-enterprise-wiki.git
+> cd pageindex-enterprise-wiki
+
+> python -m venv .venv
+> .venv\Scripts\Activate.ps1
+
+> python -m pip install --upgrade pip
+> pip install -r requirements.txt
 ```
 
 **Expected output:**
@@ -463,10 +661,17 @@ Successfully installed chromadb-0.6.3 streamlit-1.56.0 pageindex-0.2.8 ...
 
 ### Step 2: Install & Start Ollama
 
+**macOS:**
 ```bash
-# Install Ollama (if not already installed)
-$ curl -fsSL https://ollama.com/install.sh | sh
+# Install via Homebrew or install script
+$ brew install ollama
+# or: curl -fsSL https://ollama.com/install.sh | sh
+```
 
+**Windows:** Download and run the installer from [ollama.com/download](https://ollama.com/download).
+
+**Both platforms:**
+```bash
 # Pull required models
 $ ollama pull llama3
 $ ollama pull nomic-embed-text
